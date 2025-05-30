@@ -41,6 +41,43 @@ a.hover-effect:hover {
   outline-offset: 2px;
 }
 
+/* Text-to-Speech styles */
+.tts-highlighter {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+.sentence {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sentence:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.sentence.highlight {
+  background-color: rgba(255, 193, 7, 0.3);
+  border-radius: 2px;
+}
+
+.tts-player .progress {
+  height: 1.5rem;
+}
+
+.tts-player .progress-bar {
+  background-color: #4361ee;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.current-sentence {
+  max-height: 100px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
 /* Print styles */
 @media print {
   .no-print {

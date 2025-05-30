@@ -4,6 +4,9 @@ import { FaArrowLeft, FaFilePdf, FaFileWord, FaFileAlt, FaFileImage, FaFileExcel
 import { formatDate } from '../../utils/formatUtils';
 import { getFileIcon } from '../../utils/fileUtils';
 import useDocuments from '../../hooks/useDocuments';
+import TTSProvider from '../../context/TTSContext';
+import TTSPlayer from '../tts/TTSPlayer';
+import TTSHighlighter from '../tts/TTSHighlighter';
 
 /**
  * DocumentViewer component for displaying document content
@@ -171,32 +174,29 @@ const DocumentViewer = ({ documentId, onBack }) => {
             Uploaded on {formatDate(document.uploadDate)}
           </div>
           
-          <div className="document-content">
-            {/* This is a simple content display. In a real app, we would use specialized viewers for different file types */}
-            <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-              {document.content}
-            </pre>
-          </div>
+          {/* Wrap both document content and TTS player in a single TTSProvider */}
+          <TTSProvider documentContent={document.content}>
+            <div className="document-content mb-4">
+              <TTSHighlighter content={document.content} />
+            </div>
+            
+            {/* TTS Player */}
+            <Card className="mb-3">
+              <Card.Header className="d-flex align-items-center">
+                <FaBell className="me-2 text-primary" />
+                <h5 className="mb-0">Text to Speech</h5>
+              </Card.Header>
+              <Card.Body>
+                <TTSPlayer />
+              </Card.Body>
+            </Card>
+          </TTSProvider>
         </Card.Body>
       </Card>
       
-      {/* Placeholder for TTS and AI features that will be implemented later */}
+      {/* AI features */}
       <Row className="mb-4">
-        <Col md={6} className="mb-4 mb-md-0">
-          <Card>
-            <Card.Header className="d-flex align-items-center">
-              <FaBell className="me-2 text-primary" />
-              <h5 className="mb-0">Text to Speech</h5>
-            </Card.Header>
-            <Card.Body className="text-center py-5">
-              <p className="text-muted">
-                Text to speech functionality will be implemented here.
-              </p>
-            </Card.Body>
-          </Card>
-        </Col>
-        
-        <Col md={6}>
+        <Col>
           <Card>
             <Card.Header className="d-flex align-items-center">
               <FaRobot className="me-2 text-primary" />
