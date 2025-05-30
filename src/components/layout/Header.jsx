@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button, Form, InputGroup } from 'react-bootstrap';
-import { FaSearch, FaBook, FaCog } from 'react-icons/fa';
+import { FaSearch, FaBook, FaCog, FaBell } from 'react-icons/fa';
 
 /**
  * Header component with navigation and search
@@ -13,10 +13,10 @@ const Header = ({ onSearch }) => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+    <Navbar variant="dark" expand="lg" className="mb-4">
       <Container fluid>
         <Navbar.Brand href="#" className="d-flex align-items-center">
-          <FaBook className="me-2" />
+          <FaBook className="me-2" size={20} />
           <span>NotebookLM</span>
         </Navbar.Brand>
         
@@ -27,9 +27,10 @@ const Header = ({ onSearch }) => {
             <Nav.Link href="#" active>Documents</Nav.Link>
             <Nav.Link href="#">Library</Nav.Link>
             <Nav.Link href="#">Recent</Nav.Link>
+            <Nav.Link href="#">Shared</Nav.Link>
           </Nav>
           
-          <Form className="d-flex mx-auto" style={{ maxWidth: '400px' }}>
+          <Form className="d-flex mx-auto" style={{ maxWidth: '450px' }}>
             <InputGroup>
               <InputGroup.Text className="bg-secondary border-secondary text-white">
                 <FaSearch />
@@ -44,18 +45,19 @@ const Header = ({ onSearch }) => {
             </InputGroup>
           </Form>
           
-          <Nav>
-            <Button variant="outline-light" className="d-flex align-items-center">
-              <FaCog className="me-2" />
+          <Nav className="align-items-center">
+            <Nav.Link href="#" className="me-2 position-relative">
+              <FaBell size={18} />
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.5rem', padding: '0.25em 0.4em' }}>
+                3
+              </span>
+            </Nav.Link>
+            <Button variant="outline-light" className="d-flex align-items-center me-3">
+              <FaCog className="me-2" size={16} />
               <span>Settings</span>
             </Button>
-            <div className="ms-3 d-flex align-items-center">
-              <div 
-                className="bg-primary rounded-circle d-flex align-items-center justify-content-center"
-                style={{ width: '32px', height: '32px' }}
-              >
-                <span className="text-white fw-bold">L</span>
-              </div>
+            <div className="user-avatar">
+              <span>L</span>
             </div>
           </Nav>
         </Navbar.Collapse>

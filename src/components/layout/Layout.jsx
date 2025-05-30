@@ -9,10 +9,10 @@ import Footer from './Footer';
  */
 const Layout = ({ children, onSearch }) => {
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
+    <div className="d-flex flex-column min-vh-100">
       <Header onSearch={onSearch} />
       
-      <Container fluid className="flex-grow-1 py-3">
+      <Container fluid className="flex-grow-1 py-4">
         <main>
           {children}
         </main>

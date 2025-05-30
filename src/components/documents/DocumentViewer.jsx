@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Spinner, Alert, Row, Col, Badge } from 'react-bootstrap';
-import { FaArrowLeft, FaFilePdf, FaFileWord, FaFileAlt, FaFileImage, FaFileExcel, FaFilePowerpoint, FaFile, FaMarkdown } from 'react-icons/fa';
+import { FaArrowLeft, FaFilePdf, FaFileWord, FaFileAlt, FaFileImage, FaFileExcel, FaFilePowerpoint, FaFile, FaMarkdown, FaBell, FaRobot } from 'react-icons/fa';
 import { formatDate } from '../../utils/formatUtils';
 import { getFileIcon } from '../../utils/fileUtils';
 import useDocuments from '../../hooks/useDocuments';
@@ -147,8 +147,8 @@ const DocumentViewer = ({ documentId, onBack }) => {
         </Button>
       </div>
       
-      <Card className="mb-4 shadow-sm">
-        <Card.Header className="bg-light">
+      <Card className="mb-4">
+        <Card.Header>
           <Row className="align-items-center">
             <Col>
               <div className="d-flex align-items-center">
@@ -171,7 +171,7 @@ const DocumentViewer = ({ documentId, onBack }) => {
             Uploaded on {formatDate(document.uploadDate)}
           </div>
           
-          <div className="document-content p-3 bg-light rounded">
+          <div className="document-content">
             {/* This is a simple content display. In a real app, we would use specialized viewers for different file types */}
             <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
               {document.content}
@@ -181,27 +181,35 @@ const DocumentViewer = ({ documentId, onBack }) => {
       </Card>
       
       {/* Placeholder for TTS and AI features that will be implemented later */}
-      <Card className="mb-4 shadow-sm">
-        <Card.Header className="bg-light">
-          <h5 className="mb-0">Text to Speech</h5>
-        </Card.Header>
-        <Card.Body className="text-center py-5">
-          <p className="text-muted">
-            Text to speech functionality will be implemented here.
-          </p>
-        </Card.Body>
-      </Card>
-      
-      <Card className="shadow-sm">
-        <Card.Header className="bg-light">
-          <h5 className="mb-0">AI Summary & Study Guide</h5>
-        </Card.Header>
-        <Card.Body className="text-center py-5">
-          <p className="text-muted">
-            AI summary and study guide generation will be implemented here.
-          </p>
-        </Card.Body>
-      </Card>
+      <Row className="mb-4">
+        <Col md={6} className="mb-4 mb-md-0">
+          <Card>
+            <Card.Header className="d-flex align-items-center">
+              <FaBell className="me-2 text-primary" />
+              <h5 className="mb-0">Text to Speech</h5>
+            </Card.Header>
+            <Card.Body className="text-center py-5">
+              <p className="text-muted">
+                Text to speech functionality will be implemented here.
+              </p>
+            </Card.Body>
+          </Card>
+        </Col>
+        
+        <Col md={6}>
+          <Card>
+            <Card.Header className="d-flex align-items-center">
+              <FaRobot className="me-2 text-primary" />
+              <h5 className="mb-0">AI Summary & Study Guide</h5>
+            </Card.Header>
+            <Card.Body className="text-center py-5">
+              <p className="text-muted">
+                AI summary and study guide generation will be implemented here.
+              </p>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };

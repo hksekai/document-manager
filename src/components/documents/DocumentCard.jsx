@@ -67,14 +67,14 @@ const DocumentCard = ({ document, onClick }) => {
 
   return (
     <Card 
-      className="h-100 shadow-sm document-card" 
+      className="h-100 document-card" 
       onClick={() => onClick && onClick(document)}
-      style={{ cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' }}
+      style={{ cursor: 'pointer' }}
     >
-      <Card.Body className="d-flex flex-column align-items-center text-center p-4">
+      <Card.Body className="d-flex flex-column align-items-center text-center">
         {renderIcon()}
         
-        <Card.Title className="mb-1 text-truncate w-100">
+        <Card.Title className="mb-1 text-truncate w-100 fw-bold">
           {document.title}
         </Card.Title>
         
@@ -84,7 +84,7 @@ const DocumentCard = ({ document, onClick }) => {
         
         <Badge 
           bg={getBadgeVariant()} 
-          className="text-uppercase mt-auto"
+          className="mt-auto"
         >
           {document.fileType}
         </Badge>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col, Alert, Spinner } from 'react-bootstrap';
+import { Row, Col, Alert, Spinner, Button } from 'react-bootstrap';
+import { FaFileAlt, FaUpload } from 'react-icons/fa';
 import DocumentCard from './DocumentCard';
 import useDocuments from '../../hooks/useDocuments';
 
@@ -36,24 +37,23 @@ const DocumentGrid = ({ onDocumentClick }) => {
     return (
       <div className="text-center py-5">
         <div className="mb-4">
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#6c757d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M14 2V8H20" stroke="#6c757d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M12 18V12" stroke="#6c757d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M9 15H15" stroke="#6c757d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <FaFileAlt size={80} className="empty-state-icon" />
         </div>
-        <h4>No Documents Found</h4>
-        <p className="text-muted">
-          Upload your first document to get started.
+        <h4 className="mb-3">No Documents Found</h4>
+        <p className="text-muted mb-4">
+          Upload your first document to get started with NotebookLM.
         </p>
+        <Button variant="primary" onClick={() => document.querySelector('.btn-primary[size="lg"]').click()}>
+          <FaUpload className="me-2" />
+          Upload Document
+        </Button>
       </div>
     );
   }
 
   // Render document grid
   return (
-    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4 mb-4">
       {documents.map((document) => (
         <Col key={document.id}>
           <DocumentCard 

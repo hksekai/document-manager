@@ -6,6 +6,7 @@ import DocumentViewer from './components/documents/DocumentViewer';
 import UploadButton from './components/documents/UploadButton';
 import { DocumentProvider } from './context/DocumentContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './modern-theme.css';
 import './App.css';
 
 /**

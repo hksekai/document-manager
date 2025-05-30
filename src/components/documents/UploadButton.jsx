@@ -86,7 +86,7 @@ const UploadButton = () => {
       <Button 
         variant="primary" 
         size="lg" 
-        className="d-flex align-items-center shadow"
+        className="d-flex align-items-center"
         onClick={handleShowModal}
       >
         <FaUpload className="me-2" />
@@ -103,18 +103,14 @@ const UploadButton = () => {
           )}
           
           <div 
-            className="upload-area border rounded p-5 mb-3 text-center"
+            className="upload-area p-5 mb-4 text-center"
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             onClick={() => fileInputRef.current.click()}
-            style={{ 
-              cursor: 'pointer',
-              backgroundColor: '#f8f9fa',
-              borderStyle: 'dashed'
-            }}
+            style={{ cursor: 'pointer' }}
           >
-            <FaFileUpload size={48} className="mb-3 text-primary" />
-            <h5>Drag & Drop or Click to Upload</h5>
+            <FaFileUpload size={52} className="mb-4 text-primary" />
+            <h5 className="fw-bold mb-2">Drag & Drop or Click to Upload</h5>
             <p className="text-muted mb-0">
               Supported formats: PDF, DOCX, TXT, MD, and more
             </p>
@@ -129,11 +125,12 @@ const UploadButton = () => {
           </div>
           
           {selectedFile && (
-            <div className="selected-file mb-3">
-              <p className="mb-1">
-                <strong>Selected File:</strong> {selectedFile.name}
+            <div className="selected-file mb-3 p-3 bg-light rounded">
+              <p className="mb-1 d-flex align-items-center">
+                <strong className="me-2">Selected File:</strong> 
+                <span className="text-primary">{selectedFile.name}</span>
               </p>
-              <p className="text-muted mb-0">
+              <p className="text-muted mb-0 small">
                 Size: {(selectedFile.size / 1024).toFixed(2)} KB
               </p>
             </div>
@@ -150,15 +147,16 @@ const UploadButton = () => {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal} disabled={uploading}>
+          <Button variant="outline-secondary" onClick={handleCloseModal} disabled={uploading}>
             Cancel
           </Button>
           <Button 
             variant="primary" 
             onClick={handleUpload} 
             disabled={!selectedFile || uploading}
+            className="ms-2"
           >
-            {uploading ? 'Uploading...' : 'Upload'}
+            {uploading ? 'Uploading...' : 'Upload Document'}
           </Button>
         </Modal.Footer>
       </Modal>

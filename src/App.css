@@ -1,123 +1,53 @@
 /* Custom styles for the document manager application */
 
-/* Document card hover effect */
-.document-card {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+/* Additional styles not covered by modern-theme.css */
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom utility classes */
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.document-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+/* Subtle hover effect for links */
+a.hover-effect {
+  transition: all 0.2s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+a.hover-effect:hover {
+  opacity: 0.8;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+/* Focus styles for accessibility */
+:focus {
+  outline: 2px solid rgba(67, 97, 238, 0.5);
+  outline-offset: 2px;
 }
 
-/* Document content styling */
-.document-content {
-  max-height: 500px;
-  overflow-y: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-}
-
-/* Upload area hover effect */
-.upload-area {
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-}
-
-.upload-area:hover {
-  background-color: #e9ecef !important;
-  border-color: #007bff !important;
-}
-
-/* Header and footer styling */
-.navbar-brand {
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-footer {
-  font-size: 0.9rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .document-content {
-    max-height: 300px;
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
   }
   
-  h1 {
-    font-size: 1.8rem;
+  .document-content {
+    max-height: none !important;
   }
-}
-
-/* Animation for loading spinner */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.spinner-border {
-  animation: spinner-border 1s linear infinite, pulse 2s ease-in-out infinite;
-}
-
-/* Custom badge styling */
-.badge {
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  padding: 0.4em 0.6em;
-}
-
-/* Button hover effects */
-.btn {
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-}
-
-/* Dark mode adjustments (for future implementation) */
-.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-.dark-mode .card {
-  background-color: #1e1e1e;
-  border-color: #333;
-}
-
-.dark-mode .bg-light {
-  background-color: #1e1e1e !important;
-}
-
-.dark-mode .text-muted {
-  color: #adb5bd !important;
 }
