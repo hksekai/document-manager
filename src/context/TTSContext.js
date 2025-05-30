@@ -170,7 +170,7 @@ export const TTSProvider = ({ children, documentContent }) => {
         // Move to the next sentence when audio completes
         if (currentSentenceIndex < sentences.length - 1) {
           setCurrentSentenceIndex(prevIndex => prevIndex + 1);
-          setTimeout(() => play(), 0);
+          // Removed the immediate play call here - will be handled by useEffect
         } else {
           // End of document
           setIsPlaying(false);
@@ -190,6 +190,14 @@ export const TTSProvider = ({ children, documentContent }) => {
       setIsPlaying(false);
     }
   }, [sentences, currentSentenceIndex, selectedVoice, availableBrowserVoices, speed, isSpeechSynthesisSupported]);
+  
+  // Add a useEffect to handle auto-advancing to the next sentence
+  useEffect(() => {
+    // Only auto-play the next sentence if we're already playing
+    if (isPlaying && sentences.length > 0 && currentSentenceIndex < sentences.length) {
+      play();
+    }
+  }, [currentSentenceIndex, isPlaying, sentences, play]);
   
   // Pause playback
   const pause = useCallback(() => {

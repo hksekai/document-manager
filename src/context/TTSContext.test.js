@@ -261,6 +261,11 @@ describe('TTSContext', () => {
       }
     });
 
+    // Wait for the useEffect to trigger
+    act(() => {
+      jest.runAllTimers();
+    });
+
     // Should have advanced to the next sentence
     expect(screen.getByTestId('current-index')).toHaveTextContent('1');
   });
